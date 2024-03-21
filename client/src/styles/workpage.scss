@@ -1,0 +1,30 @@
+.workpage{
+  width: 100vw;
+  min-height: 100vh;
+  background-color: #F1F1F1;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.workpage_left{
+  width: 25%;
+  min-width: 250px;
+  min-height: 100vh;
+  background-color: #D9D9D9;
+  background-image: url("../images/backvectorsilver.svg");
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  background-size: 170%;
+}
+.workpage_right{
+  width: 75%;
+  min-height: 100vh;
+}
+
+.content_page{
+  width: calc(100% - 40px);
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
