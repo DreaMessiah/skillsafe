@@ -10,8 +10,8 @@ export default function Navigation(){
                     <div className="navigation_list_main_img"></div>
                     <div className="navigation_list_main_text">Главная</div>
                 </div>
-                <div className="navigation_list_btn">СОЗДАТЬ</div>
-                <div className="navigation_list_btn">ВХОДЯЩИЕ</div>
+                <Link to="/create" className="navigation_list_btn">СОЗДАТЬ</Link>
+                <Link to="/test" className="navigation_list_btn">ВХОДЯЩИЕ</Link>
                 <div className="navigation_list_btn">ДОКУМЕНТЫ</div>
                 <div className="navigation_list_btn">ИНСТРУКТАЖИ</div>
                 <div className="navigation_list_btn">ОПРОСЫ</div>
