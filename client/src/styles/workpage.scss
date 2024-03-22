@@ -396,7 +396,7 @@
 
 .questboard_doc{
   width: calc(100% - 20px);
-  height: 100vh;
+  min-height: calc(100vh - 40px);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -409,5 +409,57 @@
     font-weight: 800;
     margin-bottom: 20px;
   }
+  .questboard_doc_create{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    .questboard_doc_create_name{
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      width: calc(100% - 48px);
+      height: 60px;
+      font-size: 18pt;
+      font-weight: 600;
+      padding: 0 20px;
+      border: 4px dotted #BCBCBC;
+      margin-bottom: 20px;
+    }
+    .questboard_doc_create_days{
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      width: calc(30% - 48px);
+      height: 60px;
+      font-size: 18pt;
+      font-weight: 600;
+      padding: 0 20px;
+      border: 4px dotted #BCBCBC;
+      margin-bottom: 20px;
+    }
+    .questboard_doc_create{
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      width: calc(100% - 48px);
+      height: 100px;
+      font-size: 14pt;
+      font-weight: 600;
+      padding: 0 20px;
+      border: 4px dotted #BCBCBC;
+      margin-bottom: 20px;
+    }
+    .questboard_doc_create_docs{
+      .questboard_doc_create_docs_pdf{}
+      .questboard_doc_create_docs_plus{}
+    }
+
+  }
+
 }
 
