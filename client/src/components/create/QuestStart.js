@@ -19,7 +19,7 @@ export default function QuestStart({quest, setQuest}){
                     <div className="questboard_white_btn" onClick={()=>jumpPage(1)}>ИНСТРУКТАЖ</div>
                     <div className="questboard_white_btn" onClick={()=>jumpPage(2)}>ТЕСТ</div>
                     <div className="questboard_white_btn" onClick={()=>jumpPage(3)}>ОПРОС</div>
-                    <div className="questboard_white_btn red">ГЛАВНАЯ</div>
+                    <Link to="/workpage" className="questboard_white_btn red">ГЛАВНАЯ</Link>
                 </div>
             </div>
 

@@ -48,7 +48,7 @@ export default function MainBoard(){
                                 <div className="content_page_main_list_in_controll_dates_maked">Создано: 24.03.2024</div>
                                 <div className="content_page_main_list_in_controll_dates_complited">Ознакомиться до: 27.03.2024</div>
                             </div>
-                            <div className="content_page_main_list_in_controll_btn">ПРОЙТИ</div>
+                            <Link to="/thisquest" className="content_page_main_list_in_controll_btn">ПРОЙТИ</Link>
                         </div>
                     </div>
                     <div className="content_page_main_list_in">
@@ -59,7 +59,7 @@ export default function MainBoard(){
                                 <div className="content_page_main_list_in_controll_dates_maked">Создано: 24.03.2024</div>
                                 <div className="content_page_main_list_in_controll_dates_complited">Ознакомиться до: 25.03.2024</div>
                             </div>
-                            <div className="content_page_main_list_in_controll_btn">ПРОЙТИ</div>
+                            <Link to="/thisquest" className="content_page_main_list_in_controll_btn">ПРОЙТИ</Link>
                         </div>
                     </div>
                 </div>

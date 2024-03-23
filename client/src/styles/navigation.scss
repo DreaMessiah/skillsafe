@@ -15,6 +15,7 @@
   justify-content: center;
   align-items: center;
   .navigation_list_main{
+    text-decoration: none;
     width: 70%;
     min-width: 120px;
     display: flex;
@@ -57,6 +58,39 @@
     transition: .2s;
     color: #FFF;
     background-color: rgba(0,0,0,0.4);
+  }
+  .navigation_list_btns{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 70%;
+    min-width: 120px;
+    height: 60px;
+
+
+    margin-bottom: 2%;
+
+    div{
+      width: calc(100% / 4 - 6px);
+      min-width: 26px;
+      height: 60px;
+      border-radius: 2px;
+      background-color: #F1F1F1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: .2s;
+      color: #454545;
+      text-decoration: none;
+      font-size: 18pt;
+    }
+    div:hover{
+      transition: .2s;
+      color: #FFF;
+      background-color: rgba(0,0,0,0.4);
+
+    }
   }
 }
 .navigation_logo{

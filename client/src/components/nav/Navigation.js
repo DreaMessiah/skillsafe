@@ -6,16 +6,22 @@ export default function Navigation(){
     return (
         <div className="navigation">
             <div className="navigation_list">
-                <div className="navigation_list_main">
+                <Link to="/workpage" className="navigation_list_main">
                     <div className="navigation_list_main_img"></div>
                     <div className="navigation_list_main_text">Главная</div>
-                </div>
+                </Link>
                 <Link to="/create" className="navigation_list_btn">СОЗДАТЬ</Link>
                 <Link to="/test" className="navigation_list_btn">ВХОДЯЩИЕ</Link>
                 <div className="navigation_list_btn">ДОКУМЕНТЫ</div>
                 <div className="navigation_list_btn">ИНСТРУКТАЖИ</div>
                 <div className="navigation_list_btn">ОПРОСЫ</div>
-                <div className="navigation_list_btn">НАСТРОЙКИ<i className="fa-solid fa-magnifying-glass"></i></div>
+                <div className="navigation_list_btn">НАСТРОЙКИ</div>
+                <div className="navigation_list_btns">
+                    <div className=""><i className="fa-solid fa-users"/></div>
+                    <div className=""><i className="fa-solid fa-user-xmark"/></div>
+                    <div className=""><i className="fa-solid fa-bell"/></div>
+                    <div className=""><i className="fa-solid fa-right-to-bracket"/></div>
+                </div>
 
             </div>
             <div className="navigation_logo"></div>

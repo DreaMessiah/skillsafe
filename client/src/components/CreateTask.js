@@ -17,9 +17,12 @@ export default function CreateTask(){
                 <Navigation />
             </div>
             <div className="workpage_right">
-                <div className="uppage_tools">
-                    <div className="uppage_tools_back">Назад</div>
-                </div>
+                {(quest !== 0) &&
+                    <div className="uppage_tools">
+                        <div className="uppage_tools_back" onClick={() => setQuest(0)}>Назад</div>
+                        <div className="publish_tools_back" >ОПУБЛИКОВАТЬ</div>
+                    </div>
+                }
                 {(quest === 0) && <div className="questboard">
                     <div onClick={(e) => console.log(quest)} className="questboard_title">
                         КАКОЕ ЗАДАНИЕ СОЗДАДИМ?
@@ -43,7 +46,71 @@ export default function CreateTask(){
                         <input className="questboard_doc_create_days" placeholder="Дней для ознакомления" type="number"/>
                         <textarea className="questboard_doc_create_textarea" >Описание и указания к ознакомлению</textarea>
                         <div className="questboard_doc_create_docs">
-                            <div className="questboard_doc_create_docs_pdf"></div>
+                            <div className="questboard_doc_create_docs_file">
+                                <i className="fa-regular fa-file-word"/>
+                                <div className="helper_doc">
+                                    <div>thisdocument.pdf</div>
+                                    <div className="delete_doc">удалить</div>
+                                </div>
+
+                            </div>
+                            <div className="questboard_doc_create_docs_file">
+                                <i className="fa-regular fa-file-pdf"/>
+                                <div className="helper_doc">
+                                    <div>thisdocument.pdf</div>
+                                    <div className="delete_doc">удалить</div>
+                                </div>
+                            </div>
+                            <div className="questboard_doc_create_docs_file">
+                                <i className="fa-regular fa-file-excel"/>
+                                <div className="helper_doc">
+                                    <div>thisdocument.pdf</div>
+                                    <div className="delete_doc">удалить</div>
+                                </div>
+                            </div>
+                            <div className="questboard_doc_create_docs_file">
+                                <i className="fa-regular fa-image"/>
+                                <div className="helper_doc">
+                                    <div>thisdocument.pdf</div>
+                                    <div className="delete_doc">удалить</div>
+                                </div>
+                            </div>
+                            <div className="questboard_doc_create_docs_file">
+                                <i className="fa-regular fa-file-word"/>
+                                <div className="helper_doc">
+                                    <div>thisdocument.pdf</div>
+                                    <div className="delete_doc">удалить</div>
+                                </div>
+                            </div>
+                            <div className="questboard_doc_create_docs_file">
+                                <i className="fa-regular fa-file-pdf"/>
+                                <div className="helper_doc">
+                                    <div>thisdocument.pdf</div>
+                                    <div className="delete_doc">удалить</div>
+                                </div>
+                            </div>
+                            <div className="questboard_doc_create_docs_file">
+                                <i className="fa-regular fa-file-excel"/>
+                                <div className="helper_doc">
+                                    <div>thisdocument.pdf</div>
+                                    <div className="delete_doc">удалить</div>
+                                </div>
+                            </div>
+                            <div className="questboard_doc_create_docs_file">
+                                <i className="fa-regular fa-image"/>
+                                <div className="helper_doc">
+                                    <div>thisdocument.pdf</div>
+                                    <div className="delete_doc">удалить</div>
+                                </div>
+                            </div>
+                            <div className="questboard_doc_create_docs_file">
+                                <i className="fa-regular fa-file-word"/>
+                                <div className="helper_doc">
+                                    <div>thisdocument.pdf</div>
+                                    <div className="delete_doc">удалить</div>
+                                </div>
+                            </div>
+
                             <div className="questboard_doc_create_docs_plus"></div>
                         </div>
                     </div>
