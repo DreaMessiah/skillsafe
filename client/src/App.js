@@ -1,12 +1,16 @@
 import React, {useContext, useEffect} from "react"
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom"
 
+
 import MainPage from "./pages/MainPage"
 import TestPage from "./pages/TestPage"
 import MainWork from "./pages/MainWork";
 import InTasks from "./pages/InTasks";
 import ThisQuestion from "./pages/ThisQuestion";
 import CreatePage from "./pages/CreatePage";
+
+import './assets/style.scss'
+
 function App() {
   return (
       <Router>

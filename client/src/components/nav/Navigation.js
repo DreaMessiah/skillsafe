@@ -15,7 +15,7 @@ export default function Navigation(){
                 <div className="navigation_list_btn">ДОКУМЕНТЫ</div>
                 <div className="navigation_list_btn">ИНСТРУКТАЖИ</div>
                 <div className="navigation_list_btn">ОПРОСЫ</div>
-                <div className="navigation_list_btn">НАСТРОЙКИ</div>
+                <div className="navigation_list_btn">НАСТРОЙКИ<i className="fa-solid fa-magnifying-glass"></i></div>
 
             </div>
             <div className="navigation_logo"></div>
