@@ -12,9 +12,6 @@ export default function InstructionCreate({quest, setQuest}){
             <div className="questboard_doc_title">
                 Создаем новый документ инструктажа...
             </div>
-
         </div>
-
-
     )
 }

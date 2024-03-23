@@ -17,6 +17,9 @@ export default function CreateTask(){
                 <Navigation />
             </div>
             <div className="workpage_right">
+                <div className="uppage_tools">
+                    <div className="uppage_tools_back">Назад</div>
+                </div>
                 {(quest === 0) && <div className="questboard">
                     <div onClick={(e) => console.log(quest)} className="questboard_title">
                         КАКОЕ ЗАДАНИЕ СОЗДАДИМ?
@@ -38,14 +41,12 @@ export default function CreateTask(){
                     <div className="questboard_doc_create">
                         <input className="questboard_doc_create_name" placeholder="Введите название Инструктажа" />
                         <input className="questboard_doc_create_days" placeholder="Дней для ознакомления" type="number"/>
-                        <textarea className="questboard_doc_create" >Описание и указания к ознакомлению</textarea>
+                        <textarea className="questboard_doc_create_textarea" >Описание и указания к ознакомлению</textarea>
                         <div className="questboard_doc_create_docs">
                             <div className="questboard_doc_create_docs_pdf"></div>
                             <div className="questboard_doc_create_docs_plus"></div>
                         </div>
-
                     </div>
-
                 </div>
                 }
             </div>
