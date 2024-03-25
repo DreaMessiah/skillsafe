@@ -466,6 +466,47 @@
       border: 4px dotted #BCBCBC;
       margin-bottom: 20px;
     }
+    .questboard_doc_create_instr{
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-wrap: wrap;
+      width: calc(100% - 48px);
+      height: 60px;
+      font-size: 18pt;
+      font-weight: 600;
+      padding: 0 20px;
+      border: 4px dotted #BCBCBC;
+      margin-bottom: 20px;
+
+
+      .questboard_doc_create_sel{
+        width: 30%;
+        height: 100%;
+        border-radius: 2px;
+        border: none;
+        outline: none;
+        margin-left: -20px;
+        margin-right: 20px;
+      }
+      .quest_instuction_btn{
+        width: 250px;
+        height: 80%;
+        font-size: 14pt;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #CCC;
+        border-radius: 33px;
+        padding: 0 20px;
+        cursor: pointer;
+        transition: 0.2s;
+      }
+      .quest_instuction_btn:hover{
+        transition: 0.2s;
+        opacity: 0.8;
+      }
+    }
     .questboard_doc_create_days{
       display: flex;
       flex-direction: column;
@@ -488,6 +529,25 @@
       border: 4px dotted #BCBCBC;
       margin-bottom: 20px;
     }
+
+    .questboard_doc_create_quests {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      width: calc(100% - 48px);
+      min-height: 160px;
+      font-size: 14pt;
+      font-weight: 600;
+      padding: 20px;
+      border: 4px dotted #BCBCBC;
+      margin-bottom: 20px;
+
+      .questboard_doc_create_quests_plus{
+        width: 100%;
+      }
+    }
+
     .questboard_doc_create_docs{
       display: flex;
       justify-content: flex-start;
