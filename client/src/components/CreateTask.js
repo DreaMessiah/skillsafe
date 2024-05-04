@@ -4,8 +4,10 @@ import {Link} from "react-router-dom";
 import "../styles/workpage.scss"
 import Navigation from "./nav/Navigation";
 export default function CreateTask(){
-
     const [quest, setQuest] = useState(0)
+    const [name,setName] = useState('')
+    const [days,setDays] = useState('')
+    const [info,setInfo] = useState('')
 
     useEffect(() => {
         console.log(quest)
@@ -28,7 +30,7 @@ export default function CreateTask(){
                         КАКОЕ ЗАДАНИЕ СОЗДАДИМ?
                     </div>
                     <div className="questboard_white">
-                        <div className="questboard_white_btn" onClick={() => setQuest(1)}>ИНСТРУКТАЖ</div>
+                        <Link to={'/createskill'} className="questboard_white_btn">ИНСТРУКТАЖ</Link>
                         <div className="questboard_white_btn" onClick={() => setQuest(2)}>ТЕСТ</div>
                         <div className="questboard_white_btn" onClick={() => setQuest(3)}>ОПРОС</div>
                         <div className="questboard_white_btn red">ГЛАВНАЯ</div>
@@ -37,84 +39,7 @@ export default function CreateTask(){
 
                 </div>
                 }
-                {quest === 1 && <div className="questboard_doc">
-                    <div className="questboard_doc_title">
-                        Создаем новый документ инструктажа...
-                    </div>
-                    <div className="questboard_doc_create">
-                        <input className="questboard_doc_create_name" placeholder="Введите название Инструктажа" />
-                        <input className="questboard_doc_create_days" placeholder="Дней для ознакомления" type="number"/>
-                        <textarea className="questboard_doc_create_textarea" >Описание и указания к ознакомлению</textarea>
-                        <div className="questboard_doc_create_docs">
-                            <div className="questboard_doc_create_docs_file">
-                                <i className="fa-regular fa-file-word"/>
-                                <div className="helper_doc">
-                                    <div>thisdocument.pdf</div>
-                                    <div className="delete_doc">удалить</div>
-                                </div>
-
-                            </div>
-                            <div className="questboard_doc_create_docs_file">
-                                <i className="fa-regular fa-file-pdf"/>
-                                <div className="helper_doc">
-                                    <div>thisdocument.pdf</div>
-                                    <div className="delete_doc">удалить</div>
-                                </div>
-                            </div>
-                            <div className="questboard_doc_create_docs_file">
-                                <i className="fa-regular fa-file-excel"/>
-                                <div className="helper_doc">
-                                    <div>thisdocument.pdf</div>
-                                    <div className="delete_doc">удалить</div>
-                                </div>
-                            </div>
-                            <div className="questboard_doc_create_docs_file">
-                                <i className="fa-regular fa-image"/>
-                                <div className="helper_doc">
-                                    <div>thisdocument.pdf</div>
-                                    <div className="delete_doc">удалить</div>
-                                </div>
-                            </div>
-                            <div className="questboard_doc_create_docs_file">
-                                <i className="fa-regular fa-file-word"/>
-                                <div className="helper_doc">
-                                    <div>thisdocument.pdf</div>
-                                    <div className="delete_doc">удалить</div>
-                                </div>
-                            </div>
-                            <div className="questboard_doc_create_docs_file">
-                                <i className="fa-regular fa-file-pdf"/>
-                                <div className="helper_doc">
-                                    <div>thisdocument.pdf</div>
-                                    <div className="delete_doc">удалить</div>
-                                </div>
-                            </div>
-                            <div className="questboard_doc_create_docs_file">
-                                <i className="fa-regular fa-file-excel"/>
-                                <div className="helper_doc">
-                                    <div>thisdocument.pdf</div>
-                                    <div className="delete_doc">удалить</div>
-                                </div>
-                            </div>
-                            <div className="questboard_doc_create_docs_file">
-                                <i className="fa-regular fa-image"/>
-                                <div className="helper_doc">
-                                    <div>thisdocument.pdf</div>
-                                    <div className="delete_doc">удалить</div>
-                                </div>
-                            </div>
-                            <div className="questboard_doc_create_docs_file">
-                                <i className="fa-regular fa-file-word"/>
-                                <div className="helper_doc">
-                                    <div>thisdocument.pdf</div>
-                                    <div className="delete_doc">удалить</div>
-                                </div>
-                            </div>
-
-                            <div className="questboard_doc_create_docs_plus"></div>
-                        </div>
-                    </div>
-                </div>
+                {quest === 1 && <div/>
                 }
                 {quest === 2 && <div className="questboard_doc">
                     <div className="questboard_doc_title">

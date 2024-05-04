@@ -1,0 +1,136 @@
+.modal_active{
+  display: flex !important;
+  z-index: 100;
+}
+
+.modal,.modal-table {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+.modal_win,.modal_win-table{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #454545;
+  opacity: 0.7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal_win_wight{
+  position: fixed;
+  //top: 0;
+  //left: 0;
+  width: 400px;
+  min-height: 250px;
+  background: #FFF;
+  border-radius: 3px;
+  opacity: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  padding: 10px;
+  //margin-top: -80%;
+  .modal_win_wight_up{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    .modal_win_wight_krest{
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      background: #DC7700;
+      border: none;
+      border-radius: 3px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .del_icon_white{
+        width: 30px;
+        height: 30px;
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+      .modal_win_wight_krest:hover{
+
+      }
+    }
+  }
+  .modal_win_wight_main{
+    width: 100%;
+    height: 100%;
+    .modal_crew_message{
+      text-align: center;
+      padding: 10px;
+    }
+  }
+  .modal_win_wight_bottom{}
+}
+
+@media creen and (min-width: 600px){
+
+}
+.modal_bigwin_wight{
+  position: fixed;
+  width: 90%;
+  height: 90%;
+  background: #FFF;
+  border-radius: 3px;
+  opacity: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2000;
+  padding: 10px;
+  //margin-top: -80%;
+  .modal_win_wight_up{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: flex-end;
+    .modal_win_wight_krest{
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      background: #DC7700;
+      border: none;
+      border-radius: 3px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .del_icon_white{
+        width: 30px;
+        height: 30px;
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+      .modal_win_wight_krest:hover{
+
+      }
+    }
+  }
+  .modal_win_wight_main{
+    width: 100%;
+    height: 100%;
+    .modal_crew_message{
+      text-align: center;
+      padding: 10px;
+    }
+  }
+  .modal_win_wight_bottom{}
+}

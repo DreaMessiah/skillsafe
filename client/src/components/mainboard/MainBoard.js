@@ -1,38 +1,63 @@
-import {useState,useContext} from "react";
+import {useState, useContext, useEffect} from "react";
 import {Link} from "react-router-dom";
 
 import "../../styles/navigation.scss"
-export default function MainBoard(){
+import {observer} from "mobx-react-lite";
+import {Context} from "../../index";
+import SkillService from "../../services/SkillService";
+import formatDate from "../functions/formatDate";
+import addDays from "../functions/addDays";
+function MainBoard(){
+    const {store} = useContext(Context)
+    const [loading,setLoading] = useState(false)
+
+    const [skills,setSkills] = useState([])
+
+    const loadingHandler = async () => {
+        setLoading(true)
+        try {
+            const {data} = await SkillService.fetchSkills()
+            if(data){
+                setSkills(data)
+            }
+        }catch (e) {
+            console.log(e)
+        }finally {
+            setLoading(false)
+        }
+    }
+    useEffect(() => {
+        loadingHandler()
+    },[])
     return (
         <div className="content_page">
             <div className="content_page_up">
-                <div className="content_page_up_name">Иванов Иван Иванович</div>
-                <div className="content_page_up_dev">Машинист передвижной паровой установки 6-го разряда</div>
-                <div className="content_page_up_dep">Отдет главного механика</div>
+                <div className="content_page_up_name">{store.user.name}</div>
+                <div className="content_page_up_dev">{store.user.developer}</div>
                 <div className="content_page_up_boxes">
                     <div className="content_page_up_boxes_in">
                         <div className="content_page_up_boxes_in_title">Входящие (новые):</div>
-                        <div className="content_page_up_boxes_in_option">Инструктажи: 1</div>
-                        <div className="content_page_up_boxes_in_option">Тесты: 13</div>
-                        <div className="content_page_up_boxes_in_option">Опросы: 4</div>
+                        <div className="content_page_up_boxes_in_option">Инструктажи: {skills.length}</div>
+                        <div className="content_page_up_boxes_in_option">Тесты:</div>
+                        <div className="content_page_up_boxes_in_option">Опросы:</div>
                     </div>
                     <div className="content_page_up_boxes_in">
                         <div className="content_page_up_boxes_in_title">Пройденные:</div>
-                        <div className="content_page_up_boxes_in_option">Инструктажи: 1</div>
-                        <div className="content_page_up_boxes_in_option">Тесты: 13</div>
-                        <div className="content_page_up_boxes_in_option">Опросы: 4</div>
+                        <div className="content_page_up_boxes_in_option">Инструктажи:</div>
+                        <div className="content_page_up_boxes_in_option">Тесты:</div>
+                        <div className="content_page_up_boxes_in_option">Опросы:</div>
                     </div>
                     <div className="content_page_up_boxes_in">
                         <div className="content_page_up_boxes_in_title">Переназначено:</div>
-                        <div className="content_page_up_boxes_in_option">Инструктажи: 1</div>
-                        <div className="content_page_up_boxes_in_option">Тесты: 13</div>
-                        <div className="content_page_up_boxes_in_option">Опросы: 4</div>
+                        <div className="content_page_up_boxes_in_option">Инструктажи:</div>
+                        <div className="content_page_up_boxes_in_option">Тесты:</div>
+                        <div className="content_page_up_boxes_in_option">Опросы:</div>
                     </div>
                     <div className="content_page_up_boxes_in">
                         <div className="content_page_up_boxes_in_title titredcolor">Просрочено:</div>
-                        <div className="content_page_up_boxes_in_option">Инструктажи: 1</div>
-                        <div className="content_page_up_boxes_in_option">Тесты: 13</div>
-                        <div className="content_page_up_boxes_in_option">Опросы: 4</div>
+                        <div className="content_page_up_boxes_in_option">Инструктажи:</div>
+                        <div className="content_page_up_boxes_in_option">Тесты:</div>
+                        <div className="content_page_up_boxes_in_option">Опросы:</div>
                     </div>
 
                 </div>
@@ -40,30 +65,24 @@ export default function MainBoard(){
             <div className="content_page_main">
                 <div className="content_page_main_title">НОВЫЕ</div>
                 <div className="content_page_main_list">
-                    <div className="content_page_main_list_in">
-                        <div className="content_page_main_list_in_title">Инструктаж</div>
-                        <div className="content_page_main_list_in_name">Техника безопасности на предприятии</div>
-                        <div className="content_page_main_list_in_controll">
-                            <div className="content_page_main_list_in_controll_dates">
-                                <div className="content_page_main_list_in_controll_dates_maked">Создано: 24.03.2024</div>
-                                <div className="content_page_main_list_in_controll_dates_complited">Ознакомиться до: 27.03.2024</div>
+                    {skills.length && skills.map((item,index) => (
+                            <div key={index} className="content_page_main_list_in readed">
+                                <div className="content_page_main_list_in_title">Инструктаж</div>
+                                <div className="content_page_main_list_in_name">{item.name}</div>
+                                <div className="content_page_main_list_in_controll">
+                                    <div className="content_page_main_list_in_controll_dates">
+                                        <div className="content_page_main_list_in_controll_dates_maked">Создано: {formatDate(item.createdAt)}</div>
+                                        <div className="content_page_main_list_in_controll_dates_complited">Ознакомиться до: {formatDate(addDays(item.createdAt,item.days))}</div>
+                                    </div>
+                                    <Link to={`/skill?id=${item.id}`} className="content_page_main_list_in_controll_btn">Ознакомиться</Link>
+                                </div>
+                                <div className="havedocs">вложение присутствует</div>
                             </div>
-                            <Link to="/thisquest" className="content_page_main_list_in_controll_btn">ПРОЙТИ</Link>
-                        </div>
-                    </div>
-                    <div className="content_page_main_list_in">
-                        <div className="content_page_main_list_in_title">Тестирование</div>
-                        <div className="content_page_main_list_in_name">Техника безопасности на предприятии</div>
-                        <div className="content_page_main_list_in_controll">
-                            <div className="content_page_main_list_in_controll_dates">
-                                <div className="content_page_main_list_in_controll_dates_maked">Создано: 24.03.2024</div>
-                                <div className="content_page_main_list_in_controll_dates_complited">Ознакомиться до: 25.03.2024</div>
-                            </div>
-                            <Link to="/thisquest" className="content_page_main_list_in_controll_btn">ПРОЙТИ</Link>
-                        </div>
-                    </div>
+                        )
+                    )}
                 </div>
             </div>
         </div>
     )
 }
+export default observer(MainBoard)
