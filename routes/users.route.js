@@ -9,8 +9,7 @@ router.post('/logout',usersController.logout)
 router.get('/refresh',usersController.refresh)
 
 router.post('/registration',
-    body('email').isEmail().withMessage('Некорректный EMail адрес'),
-    body('password').isLength({min:3, max:32}).withMessage('Длинна пароля должна быть не мешьше 8ми и не больше 32х символов'),
+   // body('password').isLength({min:3, max:32}).withMessage('Длинна пароля должна быть не мешьше 8ми и не больше 32х символов'),
     body('login').isLength({ min: 4, max: 20 }).withMessage('Имя пользователя должно быть от 4 до 20 символов')
         .matches(/^[a-z0-9]+$/).withMessage('Имя пользователя должно содержать только латинские буквы')
         .not().isEmpty().withMessage('Имя пользователя не должно быть пустым'),
@@ -18,6 +17,6 @@ router.post('/registration',
     body('name').isLength({ min: 6, max: 100 }).withMessage('ФИО не может быть меньше 6 и больше 100 символов')
     ,usersController.registration)
 
-router.get('/getusers',authMiddlewere,usersController.getusers)
+router.post('/getusers',authMiddlewere,usersController.getusers)
 
 module.exports = router

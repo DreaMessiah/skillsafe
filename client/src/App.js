@@ -14,7 +14,7 @@ import {observer} from "mobx-react-lite";
 import CreateRouter from "./pages/create/CreateRouter";
 import SkillsRouter from "./pages/skills/SkillsRouter";
 import PeoplesRouter from "./pages/peoples/PeoplesRouter";
-
+import ReferenceRouter from "./pages/reference/ReferenceRouter";
 function App() {
     const {store} = useContext(Context)
     useEffect(() => {
@@ -42,7 +42,9 @@ function App() {
                     <div className="App">
                         <Routes>
                             <Route path='/' element={<MainWork/>} />
+                            <Route path='/reference' element={<ReferenceRouter page={1}/>} />
                             <Route path='/workers' element={<PeoplesRouter page={1}/>} />
+                            <Route path='/adduser' element={<PeoplesRouter page={2}/>} />
                             <Route path='/skills' element={<SkillsRouter page={1}/>} />
                             <Route path='/createskill' element={<CreateRouter page={1}/>} />
                             <Route path='/workpage' element={<MainWork/>} />

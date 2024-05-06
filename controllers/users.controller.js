@@ -62,7 +62,7 @@ class UsersController {
     }
     async getusers(req,res,next){
         try{
-            const usersData = await userService.getusers()
+            const usersData = await userService.getusers(req.body.sort,req.body.direct)
             return res.status(200).json(usersData)
         }catch (e){
             next(e)

@@ -6,9 +6,9 @@ import LoadingSpinner from "../../components/loading/LoadingSpinner";
 import AuthService from "../../services/AuthService";
 import formatDate from "../../components/functions/formatDate";
 
-import "./peoples.scss"
+import "../peoples/peoples.scss"
 
-export default function ListPage() {
+export default function DevelopersPage() {
     const [users,setUsers] = useState([])
     const [loading,setLoading] = useState(false)
     const [currentItems,setCurrentItems] = useState([])
@@ -29,7 +29,6 @@ export default function ListPage() {
             const {data} = await AuthService.getUsers(sort,sortDirection)
             if(data) {
                 setUsers(data.users)
-                console.log(data.users)
                 setCurrentItems(data.users.slice(indexOfFirstItem, indexOfLastItem))
             }
         }catch (e) {
@@ -80,7 +79,7 @@ export default function ListPage() {
                 <div className="content_page_main margintop20px">
                     <div className="content_page_main_title">Управление персоналом</div>
                     <div className="buttons">
-                        <Link to={`/adduser`} className="btn" >Добавить работника</Link>
+                        <div className="btn" >Добавить работника</div>
                     </div>
                     <div className="content_page_main_title">Список пользователей</div>
                     <div className="content_page_main_list">
@@ -103,7 +102,7 @@ export default function ListPage() {
                                     <div className="cell c1">{item.name}</div>
                                     <div className="cell c2">{item.tn}</div>
                                     <div className="cell c3">{item.login}</div>
-                                    <div className="cell c4">{item.developers ? item.developers.name : null}</div>
+                                    <div className="cell c4">{item.developer}</div>
                                     <div className='cell c5'>{formatDate(item.createdAt)}</div>
                                 </div>
                             )) : null}

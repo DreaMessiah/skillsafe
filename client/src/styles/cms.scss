@@ -1,0 +1,22 @@
+.block50{
+  width: 50%;
+}
+.block70{
+  width: 70%;
+}
+.cms-form{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  .cms-text{
+    margin: 5px 0;
+    border: 3px dotted rgba(180, 180, 180, 1);
+    border-radius: 10px;
+    padding: 10px;
+    outline: none;
+  }
+}
+.red-dotted-border{
+  border: 3px dotted rgba(180, 48, 48, 1) !important;
+
+}

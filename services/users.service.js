@@ -1,4 +1,4 @@
-const {User} = require('../models/models')
+const {User, Developers} = require('../models/models')
 const bcrypt = require('bcrypt')
 const UserDto = require('../dtos/usersDto')
 const tokenService = require('./token.service')
@@ -49,8 +49,14 @@ class UsersService{
         await tokenService.saveToken(userDto.id, tokens.refreshToken)
         return {...tokens,user: userDto}
     }
-    async getusers() {
-        const users = await User.findAll({where:{admin:false},order: [['name', 'ASC']]})
+    async getusers(sort = 'abc',direct = true) {
+        const sortingOptions = {
+            'abc': [['name', direct ? 'ASC' : 'DESC']],
+            'dev': [['developer', direct ? 'ASC' : 'DESC']],
+            'date': [['createdAt', direct ? 'ASC' : 'DESC']]
+        }
+        const order = sortingOptions[sort] || [['name', direct ? 'ASC' : 'DESC']]
+        const users = await User.findAll({where:{admin:false},order,  include: [{model: Developers, as: 'developers'}]})
         if(!users) throw ApiError.BadRequest('Ошибка получения списка пользователей')
         return {users}
     }

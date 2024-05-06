@@ -12,7 +12,7 @@ const User = sequelize.define('users',{
     checked:{type:DataTypes.BOOLEAN,defaultValue: false},
     phone:{type:DataTypes.STRING},
     unit:{type:DataTypes.INTEGER},
-    developer:{type:DataTypes.TEXT}
+    developer_id:{type:DataTypes.INTEGER,allowNull:true}
 })
 const Token = sequelize.define('token',{
     id:{type:DataTypes.INTEGER, primaryKey:true, autoIncrement:true},
@@ -21,7 +21,7 @@ const Token = sequelize.define('token',{
     refresh_token:{type:DataTypes.TEXT,require:true}
 })
 
-const Skills  = sequelize.define('skills',{
+const Skills = sequelize.define('skills',{
     id:{type:DataTypes.INTEGER, primaryKey:true, autoIncrement:true},
     name:{type:DataTypes.TEXT},
     days:{type:DataTypes.TEXT},
@@ -48,6 +48,8 @@ const Documents = sequelize.define('documents',{
     trash:{type:DataTypes.BOOLEAN,defaultValue:false}
 })
 
+User.belongsTo(Developers, { foreignKey: 'developer_id', as: 'developers' });
+Developers.hasMany(User, { foreignKey: 'developer_id', as: 'users' });
 
 Skills.belongsToMany(Developers, { through: 'SkillDeveloper' });
 Developers.belongsToMany(Skills, { through: 'SkillDeveloper' });
