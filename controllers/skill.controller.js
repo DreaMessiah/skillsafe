@@ -4,6 +4,7 @@ const fs = require('fs');
 const FileDto = require('../dtos/fileDto')
 const config = require('config')
 const PATH = require('path')
+const DevelopersService = require("../services/developers.service");
 
 class SkillController {
     async getDevelopers(req, res, next) {
@@ -32,6 +33,30 @@ class SkillController {
             next(e)
         }
     }
+    async removeSkill(req, res, next) {
+        try {
+            const {id} = req.body
+            console.log(id)
+            const isSet = await SkillService.isSetOnDev(id)
+            if(isSet.length) return res.status(200).json({err:true,isSet})
+            // else{
+            //     const deleted = await DevelopersService.removeDev(id)
+            //     return res.status(200).json({err:false,deleted})
+            // }
+        } catch (e) {
+            next(e)
+        }
+    }
+    async getSkillsCms(req, res, next) {
+        try {
+            const {sort,sortDirection} = req.body
+            const skills = await SkillService.getSkillsCms(sort,sortDirection)
+            return res.status(200).json(skills)
+        } catch (e) {
+            next(e)
+        }
+    }
+
     async loadSkill(req, res, next) {
         try {
             const {skill_id} = req.body

@@ -1,7 +1,5 @@
 import {useEffect, useState} from "react";
 import Navigation from "../../components/nav/Navigation";
-import FileInput from "../../components/inputs/FileInput";
-import SkillService from "../../services/SkillService";
 import {useMessage} from "../../hooks/message.hook";
 import {Link, useNavigate} from "react-router-dom";
 import MultiSelect from "../../components/inputs/MultiSelect";
@@ -9,14 +7,14 @@ import LoadingSpinner from "../../components/loading/LoadingSpinner";
 import CmsSelect from "../../components/inputs/CmsSelect";
 import "../../styles/cms.scss"
 import AuthService from "../../services/AuthService";
+import DevelopersService from "../../services/DevelopersService";
+import SkillService from "../../services/SkillService";
 
-export default function CreateUserPage() {
+export default function AddDeveloper() {
     const [name, setName] = useState('')
-    const [tn, setTn] = useState('')
-    const [login, setLogin] = useState('')
-    const [mail, setMail] = useState('')
+    const [group, setGroup] = useState([])
+    const [skills,setSkills] = useState([])
 
-    const [developers, setDevelopers] = useState([])
     const [dev,setDev] = useState()
     const [loading, setLoading] = useState(false)
     const [empty, setEmpty] = useState([])
@@ -29,10 +27,10 @@ export default function CreateUserPage() {
     const loadingHandler = async () => {
         setLoading(true)
         try {
-            const {data} = await SkillService.getDevelopers()
+            const {data} = await SkillService.fetchSkills()
             if(data) {
-                const devel = data.map(item => ({...item,label:item.name,value:item.id}))
-                setDevelopers(devel)
+                const group = data.map(item => ({...item,label:item.name,value:item.id}))
+                setGroup(group)
             }
         }catch (e) {
             console.log(e)
@@ -42,26 +40,25 @@ export default function CreateUserPage() {
     }
     const checkEmpty = () => {
         const n = [...empty]
-
         n[0] = !!!name.trim().length
-        n[1] = !!!login.trim().length
-        n[2] = !!!tn.length
-        n[3] = !!!dev
-
         const hasTrueValue = n.some(value => value === true)
         if( hasTrueValue ) setEmpty(n)
         else setEmpty([])
-
         return !hasTrueValue
     }
     const sendHandler = async () => {
         setLoading(true)
         try {
             if(checkEmpty()){
-                const {data} = await AuthService.createUser(login,tn,tn,name,mail,dev.id)
-                if(data) message("Ученик добавлен")
-                navigate('/workers')
-            }
+                const {data} = await DevelopersService.createDev(name,skills)
+                if(data.err) message('Должность с таким названием уже сужествует')
+                else {
+                    if(data) {
+                        message("Должность добавлена")
+                        navigate('/developers')
+                    }
+                }
+            }else message('Введите название')
         }catch (e){
             console.log(e)
         }finally {
@@ -80,19 +77,17 @@ export default function CreateUserPage() {
             <div className="workpage_right">
                 <div className="questboard_doc">
                     <div className="questboard_doc_title">
-                        Создаем нового ученика...
+                        Создаем новую должность...
                     </div>
                     <div className={`block70`}>
                         <div className="cms-form">
-                            <input value={name} onChange={(e) => setName(e.target.value)} className={`cms-text ${empty[0] && 'red-dotted-border'}`} placeholder="Введите ФИО" />
-                            <input value={login} onChange={(e) => setLogin(e.target.value)} className={`cms-text ${empty[1] && 'red-dotted-border'}`} placeholder="Введите логин" />
-                            <input value={tn} onChange={(e) => setTn(e.target.value)} className={`cms-text ${empty[2] && 'red-dotted-border'}`} placeholder="Введите табельный номер" />
-                            <input style={{marginBottom:'10px'}} value={mail} onChange={(e) => setMail(e.target.value)} className="cms-text" placeholder="Введите e-mail (если есть)" />
-                            <CmsSelect onChange={setDev} options={developers} empty={empty[3]} placeholder={'Выберете должность'} />
+                            <input value={name} onChange={(e) => setName(e.target.value)} className={`cms-text ${empty[0] && 'red-dotted-border'}`} placeholder="Введите название должности" />
+                            <h5>Назначить инструктаж?</h5>
+                            <MultiSelect values={skills} options={group} setOptions={setSkills} />
                         </div>
                     </div>
                     <div className="uppage_tools">
-                        <Link to={'/workers'} className="uppage_tools_back" >Назад</Link>
+                        <Link to={'/developers'} className="uppage_tools_back" >Назад</Link>
                         <div onClick={(e) => sendHandler()} className="publish_tools_back" >Добавить</div>
                     </div>
                 </div>

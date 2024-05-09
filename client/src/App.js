@@ -42,16 +42,19 @@ function App() {
                     <div className="App">
                         <Routes>
                             <Route path='/' element={<MainWork/>} />
-                            <Route path='/reference' element={<ReferenceRouter page={1}/>} />
+                            <Route path='/reference' element={<ReferenceRouter page={2}/>} />
+                            <Route path='/developers' element={<ReferenceRouter page={1}/>} />
                             <Route path='/workers' element={<PeoplesRouter page={1}/>} />
                             <Route path='/adduser' element={<PeoplesRouter page={2}/>} />
-                            <Route path='/skills' element={<SkillsRouter page={1}/>} />
+                            <Route path='/createdev' element={<ReferenceRouter page={3}/>} />
+                            <Route path='/skills' element={<SkillsRouter page={3}/>} />
                             <Route path='/createskill' element={<CreateRouter page={1}/>} />
                             <Route path='/workpage' element={<MainWork/>} />
                             <Route path='/intask' element={<MainWork/>} />
                             <Route path='/test' element={<InTasks/>} />
                             <Route path='/thisquest' element={<ThisQuestion/>} />
                             <Route path='/create' element={<CreatePage/>} />
+                            <Route path='*' element={<MainWork/>} />
                         </Routes>
                     </div>
                 </Router>
@@ -67,6 +70,7 @@ function App() {
                         <Route path='/skill' element={<SkillsRouter page={2}/>} />
                         <Route path='/test' element={<MainWork/>} />
                         <Route path='/skills' element={<SkillsRouter page={1}/>} />
+                        <Route path='*' element={<MainWork/>} />
                     </Routes>
                 </div>
             </Router>

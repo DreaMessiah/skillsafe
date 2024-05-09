@@ -76,7 +76,7 @@ export default function CreateSkillPage() {
             </div>
             <div className="workpage_right">
                 <div className="uppage_tools">
-                    <Link to={'/create'} className="uppage_tools_back" >Назад</Link>
+                    <Link to={'/skills'} className="uppage_tools_back" >Назад</Link>
                     <div onClick={(e) => sendHandler()} className="publish_tools_back" >ОПУБЛИКОВАТЬ</div>
                 </div>
                 <div className="questboard_doc">

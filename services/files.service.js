@@ -109,6 +109,19 @@ class FilesService {
             }
         })
     }
+    removeSkill(skill,files){
+        const folderPath = PATH.join(`${config.get('file_path')}`,`${skill}`)
+
+        files.forEach(item => {
+            const filePath = PATH.join(folderPath, `${skill}_${item.name}`);
+            try {
+                fs.unlinkSync(filePath);
+                console.log(`Файл ${filePath} успешно удален`);
+            } catch (err) {
+                console.error(`Ошибка при удалении файла ${filePath}:`, err);
+            }
+        })
+    }
     async createPathTask(path){
         //const taskPath = `${config.get('file_path')}\\tasks\\${path}`
         const taskPath = PATH.join(`${config.get('file_path')},'tasks',${path}`)

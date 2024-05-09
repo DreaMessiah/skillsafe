@@ -14,7 +14,31 @@ class UsersService{
         await tokenService.saveToken(userDto.id, tokens.refreshToken)
         return {...tokens,user: userDto}
     }
+    async createUser(login,password,tn,name,email,dev) {
+        const candidate = await User.findOne({where: {login:login}})
+        if(candidate) throw ApiError.BadRequest(`Пользователь с логином ${login} уже существует`)
+        const hashPassword = await bcrypt.hash(password,15)
+        const user = await User.create({tn,name,login,email,password:hashPassword,developer_id:dev,admin:false,unit:0})
+        return new UserDto(user)
+    }
+    async changeUser(id,login,tn,name,mail,dev){
+        const candidate = await User.findByPk(id)
+        if(!candidate) throw ApiError.BadRequest(`Пользователь не существует`)
+        candidate.login = login
+        candidate.tn = tn
+        candidate.email = mail
+        candidate.name = name
+        candidate.developer_id = dev
+        await candidate.save()
+        return new UserDto(candidate)
+    }
 
+
+    async removeUser(id) {
+        const candidate = await User.findByPk(id)
+        if(!candidate) throw ApiError.BadRequest(`Пользователь не существует`)
+        return await candidate.destroy()
+    }
     async login(login,password) {
         const user = await User.findOne({ where:{login:login} })
         if(!user) throw ApiError.BadRequest('Пользователя с таким именем не существует')

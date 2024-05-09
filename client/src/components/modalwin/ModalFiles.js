@@ -6,7 +6,7 @@ export default function ModalFiles ( {width='100vw',heigth = '30vh',data, active
     return (
         <div className={`modal ${active ? 'modal_active' : ''}`}>
 
-            <div style={{width:'100vw',height:heigth,}} className='middle-modal-win-files'>
+            <div style={{width:width,height:heigth,}} className='middle-modal-win-files'>
                 <div className='middle-modal-win-up'>
                     <span className='left-border'></span>
                     <span className='right-border' onClick={() => setActive(false)} style={{color: '#000'}}><i className="fa-solid fa-xmark"></i></span>

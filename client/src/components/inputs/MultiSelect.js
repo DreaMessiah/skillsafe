@@ -2,7 +2,7 @@ import React from 'react';
 
 import Select from 'react-select';
 
-export default function MultiSelect({values=[],options,setOptions,disable = false,empty=false}){
+export default function MultiSelect({values=[],options,setOptions,disable = false,empty=false,placeholder=''}){
  return (
      <>
          <Select
@@ -10,7 +10,7 @@ export default function MultiSelect({values=[],options,setOptions,disable = fals
              onChange={(e) => setOptions(e)}
              value={values}
              options={options}
-             placeholder={'Выберете людей...'}
+             placeholder={placeholder}
              className={`basic-multi-select ${empty && 'red-solid-select-border'} ${disable && 'disable-select'}`}
              classNamePrefix="select"
              isDisabled={disable}

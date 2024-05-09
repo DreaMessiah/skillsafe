@@ -68,6 +68,34 @@ class UsersController {
             next(e)
         }
     }
+    async createUser(req,res,next){
+        try{
+            const {login,pass,tn,name,mail,dev} = req.body
+            const usersData = await userService.createUser(login,pass,tn,name,mail,dev)
+            return res.status(200).json(usersData)
+        }catch (e){
+            next(e)
+        }
+    }
+    async removeUser(req,res,next){
+        try{
+            const {id} = req.body
+            const destroy = await userService.removeUser(id)
+            return res.status(200).json(destroy)
+        }catch (e){
+            next(e)
+        }
+    }
+    async changeUser(req,res,next){
+        try{
+            const {id,login,tn,name,mail,dev} = req.body
+            const change = await userService.changeUser(id,login,tn,name,mail,dev)
+            return res.status(200).json(change)
+        }catch (e){
+            next(e)
+        }
+    }
+
 }
 
 module.exports = new UsersController()

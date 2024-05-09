@@ -13,5 +13,14 @@ export default class AuthService{
     static async getUsers(sort,direct){
         return $api.post('/auth/getusers',{sort,direct})
     }
+    static async createUser(login,pass,tn,name,mail,dev){
+        return $api.post('/auth/create',{login,pass,tn,name,mail,dev})
+    }
+    static async removeUser(id){
+        return $api.post('/auth/remove',{id})
+    }
+    static async changeUser(id,login,tn,name,mail,dev){
+        return $api.post('/auth/change',{id,login,tn,name,mail,dev})
+    }
 
 }

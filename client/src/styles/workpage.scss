@@ -346,6 +346,7 @@
     font-size: 20pt;
     font-weight: 800;
     margin-bottom: 20px;
+    text-transform: uppercase;
   }
   .questboard_white{
     width: 50%;
@@ -367,6 +368,10 @@
       font-weight: 600;
       color: #FFFFFF;
       cursor: pointer;
+      text-transform: uppercase;
+    }
+    a{
+      text-decoration: none!important;
     }
 
     .red{

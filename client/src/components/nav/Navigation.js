@@ -14,10 +14,8 @@ function Navigation(){
                     <div className="navigation_list_main_text">Главная</div>
                 </Link>
                 {store.user.admin && <Link to="/create" className="navigation_list_btn">СОЗДАТЬ</Link>}
-                {store.user.admin && <Link to={'/workers'} className="navigation_list_btn">РАБОТНИКИ</Link>}
                 {store.user.admin && <Link to={'/reference'} className="navigation_list_btn">СПРАВОЧНИКИ</Link>}
                 {!store.user.admin && <Link to="/test" className="navigation_list_btn">ВХОДЯЩИЕ</Link> }
-
                 <Link to={'/skills'} className="navigation_list_btn">ИНСТРУКТАЖИ</Link>
                 <div className="navigation_list_btn">ОПРОСЫ</div>
                 <div className="navigation_list_btn">НАСТРОЙКИ</div>

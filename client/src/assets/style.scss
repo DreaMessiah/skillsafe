@@ -44,6 +44,31 @@
   font-size: 0.6rem;
   overflow: hidden;
 }
+.d1{
+  width: 5%;
+  text-align: center;
+}
+.d2{
+  width: 80%;
+}
+.d3{
+  width: 15%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  .inbox1{
+    text-align: center;
+  }
+  i{
+    cursor: pointer;
+    margin: 0 5px;
+    font-size: 1rem;
+    color: #cccccc;
+  }
+  i:hover{
+    color: #454545;
+  }
+}
 .c1{
   width: 30%;
 }
@@ -56,11 +81,28 @@
   width: 15%;
 }
 .c4{
-  width: 35%;
+  width: 30%;
 }
 .c5{
+  display: flex;
   text-align: center;
-  width: 10%;
+  justify-content: center;
+  width: 15%;
+  .inbox1{
+    text-align: center;
+  }
+  i{
+    cursor: pointer;
+    margin: 0 5px;
+    font-size: 1rem;
+    color: #cccccc;
+  }
+  i:hover{
+    color: #454545;
+  }
+}
+.space{
+  justify-content: space-between !important;
 }
 
 .cell:last-child {

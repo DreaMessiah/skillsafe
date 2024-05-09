@@ -13,7 +13,9 @@ import ModalFiles from "../../components/modalwin/ModalFiles";
 import MultiSelect from "../../components/inputs/MultiSelect";
 import SkillService from "../../services/SkillService";
 
-export default function DevelopersPage() {
+export default function SkillCms() {
+    const [skills,setSkills] = useState([])
+
     const [developers,setDevelopers] = useState([])
     const [loading,setLoading] = useState(false)
     const [currentItems,setCurrentItems] = useState([])
@@ -43,9 +45,9 @@ export default function DevelopersPage() {
     const loadingHandler = async (sort = 'abc') => { // 'abc' 'num' 'date'
         setLoading(true)
         try {
-            const {data} = await DevelopersService.fetchDevelopers(sort,sortDirection)
+            const {data} = await SkillService.fetchSkillsCms(sort,sortDirection)
             if(data) {
-                setDevelopers(data)
+                setSkills(data)
                 setCurrentItems(data.slice(indexOfFirstItem, indexOfLastItem))
             }
         }catch (e) {
@@ -89,7 +91,6 @@ export default function DevelopersPage() {
         setActiveRemove(false)
         setActiveChange(false)
     }
-
     const checkEmpty = () => {
         const n = [...empty]
 
@@ -99,19 +100,18 @@ export default function DevelopersPage() {
 
         return !hasTrueValue
     }
-
-    const removeDev = async () => {
+    const removeSkill = async () => {
         try{
             setLoading(true)
-            if(developers.length && selected>=0){
-                const {data} = await DevelopersService.removeDev(developers[selected].id)
+            if(skills.length && selected>=0){
+                const {data} = await SkillService.removeSkill(skills[selected].id)
                 if(data){
-                    if(data.err) message('Удаление не возможно. Имеются назначеные на должность ученики')
+                    if(data.err) message('Удаление не возможно. Имеются назначения на должности')
                     else{
-                        message('Должность удалена из системы')
-                        const nd = [...developers]
+                        message('Инструктаж удалена из системы')
+                        const nd = [...skills]
                         nd.splice(selected, 1)
-                        setDevelopers(nd)
+                        setSkills(nd)
                         cancelHandler()
                     }
                 }
@@ -142,14 +142,14 @@ export default function DevelopersPage() {
             setLoading(false)
         }
     }
-
     const sortHandler = (sort) => {
         setSortDirection(!sortDirection)
         loadingHandler(sort)
     }
+
     useEffect(() => {
-        setCurrentItems(developers.slice(indexOfFirstItem, indexOfLastItem))
-    },[currentPage,developers])
+        setCurrentItems(skills.slice(indexOfFirstItem, indexOfLastItem))
+    },[currentPage,skills])
     useEffect( () => {
         loadingHandler()
     },[])
@@ -179,9 +179,9 @@ export default function DevelopersPage() {
     function Delete(){
         return (
             <div className={'modal-inbox'}>
-                <p>Вы действительно решили удалить должность - { (developers.length && selected>=0) ? developers[selected].name + ' id:' + developers[selected].id : null}?</p>
+                <p>Вы действительно решили удалить инструктаж - { (skills.length && selected>=0) ? skills[selected].name + ' id:' + skills[selected].id : null}?</p>
                 <div className={`modal-buttons`}>
-                    <div onClick={() => removeDev()} className={`modal-btn red`}>Да</div>
+                    <div onClick={() => removeSkill()} className={`modal-btn red`}>Да</div>
                     <div onClick={() => cancelHandler()} className={`modal-btn not`}>Нет</div>
                 </div>
             </div>
@@ -194,7 +194,7 @@ export default function DevelopersPage() {
                 <div className={`modal-form cms-form`}>
                     <input value={name} onChange={(e) => setName(e.target.value)} className={`cms-text ${empty[0] && 'red-dotted-border'}`} placeholder="Введите название должности" />
                     <h5>Привязать инструктаж?</h5>
-                    <MultiSelect setOptions={setConnections} options={group} values={connections} placeholder={'Нет назначений'} />
+                    <MultiSelect setOptions={setConnections} options={group} values={connections} />
                 </div>
                 <div className={`modal-buttons`}>
                     <div onClick={() => changeDevHandler()} className={`modal-btn red`}>Сохранить</div>
@@ -212,11 +212,11 @@ export default function DevelopersPage() {
             </div>
             <div className="content_page">
                 <div className="content_page_main margintop20px">
-                    <div className="content_page_main_title">Управление обязанностями</div>
+                    <div className="content_page_main_title">Управление инструктажами</div>
                     <div className="buttons">
-                        <Link to={'/createdev'} className="btn" >Добавить должность</Link>
+                        <Link to={'/createskill'} className="btn" >Добавить Инструктаж</Link>
                     </div>
-                    <div className="content_page_main_title">Список должностей</div>
+                    <div className="content_page_main_title">Список инструктажей</div>
                     <div className="content_page_main_list">
                         <div className={`sort`}>
                             <div className={`title text`}>Сортировать</div>

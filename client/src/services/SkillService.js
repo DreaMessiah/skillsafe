@@ -10,7 +10,14 @@ export default class SkillService{
     static fetchSkills(){
         return $api.get('/skill/fetchskils')
     }
+    static fetchSkillsCms(sort,sortDirection){
+        return $api.post('/skill/fetchskilscms',{sort,sortDirection})
+    }
     static loadSkill(skill_id){
         return $api.post('/skill/loadskill',{skill_id})
     }
+    static removeSkill(id){
+        return $api.post('/skill/removeskill',{id})
+    }
+
 }
